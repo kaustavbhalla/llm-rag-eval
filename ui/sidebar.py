@@ -1,7 +1,7 @@
 import streamlit as st
 from litellm import model_cost
 
-def renderSidebar():
+def renderSidebar() -> dict:
     st.sidebar.title("Choose your LLM")
 
     availableModels = sorted(model_cost.keys())
@@ -80,4 +80,4 @@ def renderSidebar():
     run = st.sidebar.button("Run Eval", type="primary", use_container_width=True, disabled=False)
 
 
-    return finalModel, apiKey, contextFile, qaFile, nSamp, topK, chunkTokens, run
+    return {"model": finalModel, "api": apiKey, "context_file": contextFile, "qa_json": qaFile, "n_sample": nSamp, "top_k": topK, "chunk_tokens": chunkTokens, "runInf": run}
