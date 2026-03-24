@@ -1,0 +1,42 @@
+[
+  {
+    "question": "Who identified the sub-atomic particle known as the electron?",
+    "correctAnswer": "J.J. Thomson."
+  },
+  {
+    "question": "Who discovered the new radiations in a gas discharge called canal rays?",
+    "correctAnswer": "E. Goldstein."
+  },
+  {
+    "question": "What items was J.J. Thomson's model of an atom compared to?",
+    "correctAnswer": "A Christmas pudding and a watermelon."
+  },
+  {
+    "question": "What experiment did Ernest Rutherford design to discover the atomic nucleus?",
+    "correctAnswer": "The alpha-particle scattering experiment using a thin gold foil."
+  },
+  {
+    "question": "What exactly are alpha particles?",
+    "correctAnswer": "Alpha particles are doubly-charged helium ions that have a mass of 4 u."
+  },
+  {
+    "question": "Who discovered the neutron in 1932?",
+    "correctAnswer": "J. Chadwick."
+  },
+  {
+    "question": "What formula gives the maximum number of electrons present in an atomic shell?",
+    "correctAnswer": "The formula is 2n2, where 'n' is the orbit number or energy level index."
+  },
+  {
+    "question": "What sub-atomic particles determine the atomic number of an element?",
+    "correctAnswer": "The total number of protons present in the nucleus of an atom determines its atomic number."
+  },
+  {
+    "question": "How is the mass number of an atom defined?",
+    "correctAnswer": "It is defined as the sum of the total number of protons and neutrons present in the nucleus of an atom."
+  },
+  {
+    "question": "What is the definition of isotopes?",
+    "correctAnswer": "Isotopes are defined as atoms of the same element, having the same atomic number but different mass numbers."
+  }
+]

@@ -10,7 +10,7 @@ def runInference(model: str, question: str, context: str, apiKey: str | None = N
         {"role": "user", "content": f"Context : \n {context} \n\nQuestion: {question}"}
     ]
 
-    primaryResponse = litellm.completion(model=model, messages=messages, temperature=0)
+    primaryResponse = litellm.completion(model=model, messages=messages, temperature=0, api_key=apiKey)
     mainAnswer = primaryResponse.choices[0].message.content
 
     #for selfcheckgpt
