@@ -24,7 +24,11 @@ def getContextFromFiles(uploaded_files) -> list[Document]:
             with pdfplumber.open(f) as pdfFile:
                 text = "\n\n".join(page.extract_text() or "error extracting pdf" for page in pdfFile.pages)
         else:
-            text = f.read().decode("utf-8")
+            try:
+                text = f.read().decode("utf-8")
+            except UnicodeDecodeError:
+                f.seek(0)
+                text = f.read().decode("latin-1")
 
 
         if text.strip():

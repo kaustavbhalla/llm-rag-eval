@@ -8,19 +8,22 @@ Three backends ensembled:
 import numpy as np
 import torch
 import streamlit as st
-import spacy
+import nltk
 from selfcheckgpt.modeling_selfcheck import (
     SelfCheckNLI,
     SelfCheckBERTScore,
     SelfCheckNgram,
 )
 
-
-@st.cache_resource(show_spinner=False)
-def _load_spacy():
-    # run once: python -m spacy download en_core_web_sm
-    return spacy.load("en_core_web_sm")
-
+def _ensure_nltk_data():
+    try:
+        nltk.data.find("tokenizers/punkt")
+    except LookupError:
+        nltk.download("punkt", quiet=True)
+    try:
+        nltk.data.find("tokenizers/punkt_tab")
+    except LookupError:
+        nltk.download("punkt_tab", quiet=True)
 
 @st.cache_resource(show_spinner=False)
 def _load_selfcheck_backends():
@@ -32,9 +35,8 @@ def _load_selfcheck_backends():
 
 
 def _split_sentences(text: str) -> list[str]:
-    nlp = _load_spacy()
-    doc = nlp(text)
-    return [sent.text.strip() for sent in doc.sents if sent.text.strip()]
+    _ensure_nltk_data()
+    return [s.strip() for s in nltk.sent_tokenize(text) if s.strip()]
 
 
 def evaluate_hallucination(main_answer: str, samples: list[str]) -> dict:

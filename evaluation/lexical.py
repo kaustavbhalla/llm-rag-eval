@@ -3,11 +3,15 @@ from nltk.util import ngrams
 from collections import Counter
 import nltk
 
+def _ensure_nltk_data():
+    resources = ["punkt", "punkt_tab", "stopwords"]
+    for res in resources:
+        try:
+            nltk.data.find(f"tokenizers/{res}" if res != "stopwords" else f"corpora/{res}")
+        except LookupError:
+            nltk.download(res, quiet=True)
 
-nltk.download("punkt",     quiet=False)
-nltk.download("punkt_tab", quiet=False)
-nltk.download("stopwords", quiet=False)
-
+_ensure_nltk_data()
 
 Rscorer = rouge_scorer.RougeScorer(["rouge1", "rouge2", "rougeL"], use_stemmer=True)
 

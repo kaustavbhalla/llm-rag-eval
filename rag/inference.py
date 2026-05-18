@@ -10,14 +10,13 @@ def runInference(model: str, question: str, context: str, apiKey: str | None = N
         {"role": "user", "content": f"Context : \n {context} \n\nQuestion: {question}"}
     ]
 
-    primaryResponse = litellm.completion(model=model, messages=messages, temperature=0, api_key=apiKey)
+    primaryResponse = litellm.completion(model=model, messages=messages, temperature=0, api_key=apiKey, stream=False)
     mainAnswer = primaryResponse.choices[0].message.content
 
-    #for selfcheckgpt
-
+    # for selfcheckgpt
     samples = []
-    for i in range(n_samples):
-        samp = litellm.completion(model=model, messages=messages, temperature=0.5)
+    for _ in range(n_samples):
+        samp = litellm.completion(model=model, messages=messages, temperature=0.5, api_key=apiKey, stream=False)
         samples.append(samp.choices[0].message.content)
 
     return {

@@ -5,6 +5,7 @@ description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
+    "en-core-web-sm",
     "faiss-cpu>=1.8.0",
     "google-generativeai>=0.8.6",
     "langchain>=0.2.0",
@@ -23,3 +24,6 @@ dependencies = [
     "torch>=2.2.0",
     "transformers>=4.40.0",
 ]
+
+[tool.uv.sources]
+en-core-web-sm = { url = "https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-3.7.1/en_core_web_sm-3.7.1-py3-none-any.whl" }
